@@ -6,7 +6,7 @@ from routers import client, user, license
 import uvicorn
 
 
-app = FastAPI()
+app = FastAPI(docs_url="/jbadonaiventures/jesus_is_lord/bible/john_3_16", redoc_url=None)
 
 app.include_router(client.router)
 app.include_router(user.router)
