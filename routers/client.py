@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 import schemas, models, database
+from License.environment import Config
+from License.security import JBEncrypter, JBHash
 
 
 router = APIRouter(
@@ -10,8 +12,21 @@ router = APIRouter(
 get_db = database.get_db
 
 
+def is_authenticated(pp):
+    p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
+    # p = str(p).replace("=","%3D")
+    print(p)
+    if pp is None or pp != p[1]:
+        return False
+
+    return True
+
+
 @router.post("", status_code=status.HTTP_201_CREATED)
-def create_client(request: schemas.ClientDataModel, db: Session = Depends(get_db)):
+def create_client(request: schemas.ClientDataModel, db: Session = Depends(get_db), pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
     client = db.query(models.ClientModel).filter(models.ClientModel.systemId == request.systemId)
     if not client.first():
         new_client = models.ClientModel(systemId=request.systemId,
@@ -53,7 +68,10 @@ def get_all_clients(db: Session = Depends(get_db)):
 
 
 @router.delete("/{systemId}")
-def delete_client(systemId: str, db: Session = Depends(get_db)):
+def delete_client(systemId: str, db: Session = Depends(get_db), pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
     client = db.query(models.ClientModel).filter(models.ClientModel.systemId == systemId)
     if not client.first():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Client with email {systemId} not Found!")
@@ -64,7 +82,10 @@ def delete_client(systemId: str, db: Session = Depends(get_db)):
 
 
 @router.put("/{systemId}", status_code=status.HTTP_200_OK)
-def client_update(systemId: str, request: schemas.ClientDataModel, db: Session = Depends(get_db)):
+def client_update(systemId: str, request: schemas.ClientDataModel, db: Session = Depends(get_db), pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
     client = db.query(models.ClientModel).filter(models.ClientModel.systemId == systemId)
     if not client.first():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with system Id {systemId} not Found!")

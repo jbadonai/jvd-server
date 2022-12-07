@@ -3,6 +3,8 @@ from sqlalchemy.orm import Session
 import schemas, models, database
 from encrypter import Encrypter
 from typing import List
+from License.environment import Config
+from License.security import JBEncrypter, JBHash
 
 router = APIRouter(
     prefix='/user',
@@ -11,8 +13,20 @@ router = APIRouter(
 get_db = database.get_db
 
 
+def is_authenticated(pp):
+    p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
+    # p = str(p).replace("=","%3D")
+    print(p)
+    if pp is None or pp != p[1]:
+        return False
+
+    return True
+
 @router.post("", response_model=schemas.UserDataResponseModel, status_code=status.HTTP_201_CREATED)
-def create_user(request: schemas.UserDataModel, db: Session = Depends(get_db)):
+def create_user(request: schemas.UserDataModel, db: Session = Depends(get_db), pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
     user = db.query(models.UserModel).filter(models.UserModel.email == request.email)
 
     if not user.first():
@@ -62,7 +76,10 @@ def get_user_auto(email: str ="", id: int = 0, db: Session = Depends(get_db)):
 
 
 @router.delete("/{email}", status_code=status.HTTP_200_OK)
-def delete_user(email: str, db: Session = Depends(get_db)):
+def delete_user(email: str, db: Session = Depends(get_db), pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
     user = db.query(models.UserModel).filter(models.UserModel.email == email)
     if not user.first():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with email {email} no longer exists.!")
@@ -73,7 +90,10 @@ def delete_user(email: str, db: Session = Depends(get_db)):
 
 
 @router.put("/{email}", status_code=status.HTTP_200_OK)
-def update_user(email: str, request: schemas.UserDataModel, db : Session = Depends(get_db)):
+def update_user(email: str, request: schemas.UserDataModel, db : Session = Depends(get_db), pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
     user = db.query(models.UserModel).filter(models.UserModel.email == email)
     if not user.first():
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with email {email} not Found!")
