@@ -14,8 +14,6 @@ get_db = database.get_db
 
 def is_authenticated(pp):
     p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
-    # p = str(p).replace("=","%3D")
-    print(p)
     if pp is None or pp != p[1]:
         return False
 
