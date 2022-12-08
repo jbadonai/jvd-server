@@ -4,20 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/main.py" line="66" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="626797e8-672c-4597-a100-09728ae9baa2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/localDatabase.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/License/emailSender.py" beforeDir="false" afterPath="$PROJECT_DIR$/License/emailSender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/License/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/License/environment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/License/generalFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/License/generalFunctions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/License/licenseGen.py" beforeDir="false" afterPath="$PROJECT_DIR$/License/licenseGen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/License/messageTemplates.py" beforeDir="false" afterPath="$PROJECT_DIR$/License/messageTemplates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/License/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/License/security.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/license.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/license.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/user.py" afterDir="false" />
-    </list>
+    <list default="true" id="626797e8-672c-4597-a100-09728ae9baa2" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="69" column="71" lean-forward="true" selection-start-line="69" selection-start-column="71" selection-end-line="69" selection-end-column="71" />
+              <caret line="69" column="19" lean-forward="true" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -378,13 +365,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1764706" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1764706" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46181172" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23801066" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -591,7 +579,7 @@
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="69" column="71" lean-forward="true" selection-start-line="69" selection-start-column="71" selection-end-line="69" selection-end-column="71" />
+          <caret line="69" column="19" lean-forward="true" selection-start-line="69" selection-start-column="19" selection-end-line="69" selection-end-column="19" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
