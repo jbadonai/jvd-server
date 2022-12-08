@@ -1,8 +1,15 @@
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 import schemas, models, database
-from License.environment import Config
+# from License.environment import Config
 from License.security import JBEncrypter, JBHash
+from localDatabase import LocalDatabase
+from License.security import JBEncrypter
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
 
 router = APIRouter(
     prefix="/client",
@@ -12,7 +19,8 @@ get_db = database.get_db
 
 
 def is_authenticated(pp):
-    p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
+    # p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
+    p = JBHash().hash_message_with_nonce(get_settings('ENCRYPT_PASSWORD'))
     if pp is None or pp != p[1]:
         return False
 
@@ -46,6 +54,7 @@ def create_client(request: schemas.ClientDataModel, db: Session = Depends(get_db
 
 @router.get("/{systemId}", status_code=status.HTTP_200_OK)
 def get_client(systemId: str, db: Session = Depends(get_db)):
+    print("sure im here")
     client = db.query(models.ClientModel).filter(models.ClientModel.systemId == systemId)
     if not client.first():
         return HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Client with system Id {systemId} not Found!")

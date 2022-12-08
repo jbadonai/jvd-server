@@ -6,10 +6,16 @@ from PyQt5.QtWidgets import  QFileDialog
 import subprocess
 import uuid
 import platform
-from security import JBHash, JBEncrypter
-from videoDatabase import VideoDatabase
-from environment import Config
+from License.security import JBHash, JBEncrypter
+# from environment import Config
 import re
+from localDatabase import LocalDatabase
+from License.security import JBEncrypter
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
 
 
 class GeneralFunctions():
@@ -43,10 +49,12 @@ class GeneralFunctions():
             processor = my_system.processor
 
             # set system id literal
-            message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{Config().config('ENCRYPT_PASSWORD')}"
+            # message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{Config().config('ENCRYPT_PASSWORD')}"
+            message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{get_settings('ENCRYPT_PASSWORD')}"
 
             # layer 1 encryption of system id [encrption]
-            encryptedMessage = JBEncrypter().encrypt(message, Config().config('ENCRYPT_PASSWORD'))
+            # encryptedMessage = JBEncrypter().encrypt(message, Config().config('ENCRYPT_PASSWORD'))
+            encryptedMessage = JBEncrypter().encrypt(message, get_settings('ENCRYPT_PASSWORD'))
 
             # layer 1 encryption of system id [hash]
             hashMessage = JBHash().hash_message_with_nonce(message)

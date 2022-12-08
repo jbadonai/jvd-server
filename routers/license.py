@@ -2,8 +2,15 @@ from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 import schemas, models, database
 from License.licenseGen import LicenseGen
-from License.environment import Config
+# from License.environment import Config
 from License.security import JBEncrypter, JBHash
+from localDatabase import LocalDatabase
+from License.security import JBEncrypter
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
 
 
 license_generator = LicenseGen()
@@ -14,9 +21,8 @@ router = APIRouter(
 )
 
 def is_authenticated(pp):
-    p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
-    # p = str(p).replace("=","%3D")
-    print(p)
+    # p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
+    p = JBHash().hash_message_with_nonce(get_settings('ENCRYPT_PASSWORD'))
     if pp is None or pp != p[1]:
         return False
 

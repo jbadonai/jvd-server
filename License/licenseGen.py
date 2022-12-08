@@ -1,7 +1,14 @@
 from License.security import LicenseGenerator, JBEncrypter
-from License.environment import Config
+# from License.environment import Config
 from License.emailSender import EmailSender
 import License.messageTemplates as msgTemp
+from localDatabase import LocalDatabase
+from License.security import JBEncrypter
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
 
 
 class LicenseGen():
@@ -10,9 +17,11 @@ class LicenseGen():
         pass
 
     async def generate_license(self, system_id, system_key, email):
-        trialLicense = LicenseGenerator().generate_license(days=int(Config().config('FREE_TRIAL_DAYS')))
+        # trialLicense = LicenseGenerator().generate_license(days=int(Config().config('FREE_TRIAL_DAYS')))
+        trialLicense = LicenseGenerator().generate_license(days=int(get_settings('FREE_TRIAL_DAYS')))
         salt = f"Trial'{email}'{system_id}'{system_key}'{trialLicense}"
-        user_license = JBEncrypter().encrypt(salt, Config().config("ENCRYPT_PASSWORD"))
+        # user_license = JBEncrypter().encrypt(salt, Config().config("ENCRYPT_PASSWORD"))
+        user_license = JBEncrypter().encrypt(salt, get_settings("ENCRYPT_PASSWORD"))
 
         return user_license
 
@@ -22,7 +31,8 @@ class LicenseGen():
             # messageplain = msgTemp.get_license_request_message_plain(email, license.decode())
 
 
-            days = int(Config().config("FREE_TRIAL_DAYS"))
+            # days = int(Config().config("FREE_TRIAL_DAYS"))
+            days = int(get_settings("FREE_TRIAL_DAYS"))
             if days > 1:
                 message = f"{days} days"
             else:

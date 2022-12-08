@@ -1,7 +1,16 @@
-from License.environment import Config
+# from License.environment import Config
+from localDatabase import LocalDatabase
+from License.security import JBEncrypter
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
+
 
 async def get_license_request_message(user, license_key):
-    days = int(Config().config("FREE_TRIAL_DAYS"))
+    # days = int(Config().config("FREE_TRIAL_DAYS"))
+    days = int(get_settings("FREE_TRIAL_DAYS"))
     if days > 1:
         message = f"{days} days"
     else:

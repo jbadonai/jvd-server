@@ -2,9 +2,61 @@ from cryptography.fernet import Fernet
 import hashlib
 from urllib.request import urlopen
 from datetime import timedelta
-from License.environment import Config
-
+from License.environment import *
+import pyrebase
+import  os
 import datetime
+from localDatabase import LocalDatabase
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
+
+
+def get_config():
+    try:
+        fbDec = eval(JBEncrypter().decrypt(fb_config))
+        fbAuth = eval(JBEncrypter().decrypt(fb_data_auth))
+
+        firebase = pyrebase.initialize_app(fbDec)
+
+        db = firebase.database()
+        auth = firebase.auth()
+
+        def authenticate(username, password):
+            try:
+                result = auth.sign_in_with_email_and_password(username, password)
+                idToken = result['idToken']
+                return idToken
+            except Exception as e:
+                # print(e)
+                return None
+
+        def get_config():
+            un = input("Username: ")
+            pw = input("Password: ")
+
+            try:
+                os.system('cls')
+            except:
+                try:
+                    os.system('clear')
+                except:
+                    pass
+
+            token = authenticate(un.strip(), pw.strip())
+            if token is  None:
+                raise Exception
+
+            configurations = db.child("Config").get(token=token)
+            config = dict(configurations.val())
+            return config
+
+        return get_config()
+    except Exception as e:
+        return None
+        pass
 
 
 class JBEncrypter():
@@ -21,7 +73,9 @@ class JBEncrypter():
             password = password_provided.encode()  # Convert to type bytes
             # salt = os.urandom(16)  # CHANGE THIS - recommend using a key from os.urandom(16), must be of type bytes
 
-            salt = Config().config("SALT").encode()  # CHANGE THIS - recommend using a key from os.urandom(16), must be of type bytes
+            salt = "jbadonaiventures".encode()  # CHANGE THIS - recommend using a key from os.urandom(16), must be of type bytes
+            # salt = Config().config("SALT").encode()  # CHANGE THIS - recommend using a key from os.urandom(16), must be of type bytes
+            # salt = config["SALT"].encode()  # CHANGE THIS - recommend using a key from os.urandom(16), must be of type bytes
             # print(f'salt = {salt}')
 
             kdf = PBKDF2HMAC(
@@ -64,7 +118,9 @@ class JBHash():
         for x in range(100000000000):
             encoded_message = message.encode()
             nonce = str(x)
-            result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
+            # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
+            result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
             # print(result.hexdigest())
             if str(result.hexdigest())[:2] == "aa":
                 return nonce, result.hexdigest()
@@ -77,7 +133,9 @@ class JBHash():
                     message = f"{application_name}_{message}"
                     encoded_message = message.encode()
                     nonce = str(x)
-                    result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
+                    # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
+                    result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+                    # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
                     # print(result.hexdigest())
                     if str(result.hexdigest())[:3] == "afc":
                         return nonce, result.hexdigest()
@@ -88,7 +146,9 @@ class JBHash():
             message = f"{application_name}_{message}"
             encoded_message = message.encode()
             nonce = str(my_nonce)
-            result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
+            result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
+            # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
             # print(result.hexdigest())
             # if str(result.hexdigest())[:3] == "afc":
             return nonce, result.hexdigest()
@@ -136,11 +196,15 @@ class LicenseGenerator():
         if days is not None:
             expire = datetime.datetime.strptime(current_time, '%Y-%m-%d %H:%M:%S') + timedelta(days=days)
 
-        return self.encrypter.encrypt(str(expire), Config().config('LICENCE_PASSWORD')).decode()
+        return self.encrypter.encrypt(str(expire), get_settings('LICENCE_PASSWORD')).decode()
+        # return self.encrypter.encrypt(str(expire), Config().config('LICENCE_PASSWORD')).decode()
+        # return self.encrypter.encrypt(str(expire), config['LICENCE_PASSWORD']).decode()
 
     def is_license_expired(self, license):
         try:
-            expirestr = self.encrypter.decrypt(license.encode(), Config().config('LICENCE_PASSWORD'))
+            expirestr = self.encrypter.decrypt(license.encode(), get_settings('LICENCE_PASSWORD'))
+            # expirestr = self.encrypter.decrypt(license.encode(), Config().config('LICENCE_PASSWORD'))
+            # expirestr = self.encrypter.decrypt(license.encode(), config['LICENCE_PASSWORD'])
             # current_time = self.get_time_online()
             current_time = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
@@ -158,4 +222,5 @@ class LicenseGenerator():
         except:
             return True, "Invalid License!"
             pass
+
 

@@ -3,8 +3,15 @@ from sqlalchemy.orm import Session
 import schemas, models, database
 from encrypter import Encrypter
 from typing import List
-from License.environment import Config
+# from License.environment import Config
 from License.security import JBEncrypter, JBHash
+from localDatabase import LocalDatabase
+from License.security import JBEncrypter
+
+
+def get_settings(key):
+    value = LocalDatabase().get_settings(key)
+    return JBEncrypter().decrypt(value)
 
 router = APIRouter(
     prefix='/user',
@@ -14,9 +21,8 @@ get_db = database.get_db
 
 
 def is_authenticated(pp):
-    p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
-    # p = str(p).replace("=","%3D")
-    print(p)
+    # p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
+    p = JBHash().hash_message_with_nonce(get_settings('ENCRYPT_PASSWORD'))
     if pp is None or pp != p[1]:
         return False
 
