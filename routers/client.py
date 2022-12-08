@@ -4,7 +4,6 @@ import schemas, models, database
 from License.environment import Config
 from License.security import JBEncrypter, JBHash
 
-
 router = APIRouter(
     prefix="/client",
     tags=["Clients"]

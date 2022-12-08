@@ -6,6 +6,12 @@ from routers import client, user, license
 import uvicorn
 from License.security import JBEncrypter
 from License.environment import Config
+import  os
+
+if os.path.exists('jvd.db') is False:
+    with open('jvd.db', 'w') as fp:
+        pass
+
 
 
 app = FastAPI(docs_url="/jbadonaiventures/jesus_is_lord/bible/john_3_16", redoc_url=None)

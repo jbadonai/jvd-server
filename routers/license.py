@@ -34,3 +34,13 @@ async def generate_license_and_send_via_mail(systemId: str = "", systemKey: str 
         return {'status_code': status.HTTP_200_OK, 'detail': email_status, 'user_license': user_license}
     else:
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="No Sufficient Data")
+
+
+@router.get("/trial_days")
+def change_trial_days(days: str = 3, pp: str = None):
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
+    Config().trial_days = days
+
+    return {'status_code': status.HTTP_200_OK, 'details':"Trial days updated!"}

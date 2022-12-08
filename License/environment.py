@@ -10,6 +10,7 @@ class Config():
               'appId': "1:98278757450:web:3c9752f1e27404c5b802b3",
               'measurementId': "G-J6FR4943V9"
             }
+        self.trial_days = 3
         pass
         # self.config = {
         # "ENCRYPT_PASSWORD": "jbadonaiventures",
@@ -40,7 +41,7 @@ class Config():
         if key == "HASH_PASSWORD": return "jbadonaiventures"
         if key == "SALT": return "jbadonaiventures"
         if key == "LICENCE_PASSWORD": return "jbadonaiventures international"
-        if key == "FREE_TRIAL_DAYS": return 7
+        if key == "FREE_TRIAL_DAYS": return self.trial_days
         if key == "CLIENT_ID": return "546078638135-kcgf8je6m5idir3g23s83b4t0582nq69.apps.googleusercontent.com"
         if key == "CLIENT_SECRET": return "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"
         if key == "SCOPES": return 'https://www.googleapis.com/auth/gmail.send'
