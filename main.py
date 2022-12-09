@@ -1,15 +1,18 @@
-from fastapi import FastAPI, status
-from database import engine
-import models
-import database
-from routers import client, user, license
-import uvicorn
-import  os
-import  time
-from License import security
-from localDatabase import LocalDatabase
-from License.security import JBEncrypter
-
+try:
+    from fastapi import FastAPI, status
+    from database import engine
+    import models
+    import database
+    from routers import client, user, license
+    import uvicorn
+    import  os
+    import  time
+    from License import security
+    from localDatabase import LocalDatabase
+    from License.security import JBEncrypter
+except Exception as e:
+    print(f"An Error Occurred in imports section: {e}")
+    input("press any key to terminate")
 
 print("Initializing completed!")
 
@@ -51,7 +54,8 @@ if __name__ == "__main__":
 
             # get config setting from fb
             print("Getting configuration data from data server")
-            myConfig = security.get_config()
+            myConfig = security.get_config()[0]
+            errorDetail = security.get_config()[1]
 
             #   save the configruation  from fb to server settings database
 
@@ -73,9 +77,10 @@ if __name__ == "__main__":
                         LocalDatabase().update_setting(config, valEnc)
                 return True
             else:
-                print("No configuration data found on data server")
+                print(f"No configuration data found on data server: \n\tError detail:-{errorDetail}")
                 return False
-        except:
+        except Exception as e:
+            print(f"Last attemp: {e}")
             return False
             pass
 
@@ -84,4 +89,14 @@ if __name__ == "__main__":
         uvicorn.run(app, host='127.0.0.1', port=8000)
     else:
         print('Unable to start Server! No configuration data was received form data Server')
+
+        # check if there is an existing data to work with locally and seek users concent to continue with it or not.
+        test = LocalDatabase().is_setting_key_in_database('ENCRYPT_PASSWORD')
+        if test is True:
+            ans = input("An Old data was found! Continue with old data? (y/n): ")
+            if ans == 'y' or ans == 'Y':
+                uvicorn.run(app, host='127.0.0.1', port=8000)
+            else:
+                print()
+                print("Try again later when the internet has been restored.")
 

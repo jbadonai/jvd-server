@@ -1,4 +1,5 @@
 from passlib.context import CryptContext
+from passlib.handlers.bcrypt import bcrypt
 
 
 class Encrypter():

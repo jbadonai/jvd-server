@@ -7,6 +7,8 @@ import pyrebase
 import  os
 import datetime
 from localDatabase import LocalDatabase
+from exceptionsList import *
+import  platform
 
 
 def get_settings(key):
@@ -30,32 +32,36 @@ def get_config():
                 idToken = result['idToken']
                 return idToken
             except Exception as e:
-                # print(e)
-                return None
+                if str(e).__contains__("Errno 11001") or str(e).__contains__("Max retries exceeded"):
+                    raise InternetConnectionException
+                else:
+                    return None
 
         def get_config():
             un = input("Username: ")
             pw = input("Password: ")
 
-            try:
+            if platform.system() == "Windows":
                 os.system('cls')
-            except:
-                try:
-                    os.system('clear')
-                except:
-                    pass
+            else:
+                os.system('clear')
 
             token = authenticate(un.strip(), pw.strip())
-            if token is  None:
-                raise Exception
+            if token is None:
+                raise UnAuthorizedException
 
             configurations = db.child("Config").get(token=token)
             config = dict(configurations.val())
             return config
 
-        return get_config()
+        return get_config(), None
+    except InternetConnectionException:
+        return None, "Internet Connection issue"
+    except UnAuthorizedException:
+        return None, "Unauthorized user!"
     except Exception as e:
-        return None
+        print(f"following error occurred: {e}")
+        return None, e
         pass
 
 
