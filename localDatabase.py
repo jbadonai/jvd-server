@@ -45,7 +45,7 @@ class LocalDatabase():
             ans = cursor.fetchall()
             return ans[0][0]
         except Exception as e:
-            print(f"An error occurred in the database module 'GET SETTING' [{key}]:{e}")
+            print(f"An error occurred in localDatabase.py > get_settings() [{key}]:{e}")
             return None
 
     def is_setting_key_in_database(self, key):

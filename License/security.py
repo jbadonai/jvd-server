@@ -10,6 +10,7 @@ from localDatabase import LocalDatabase
 from exceptionsList import *
 import  platform
 
+emergency = b'gAAAAABjzTTq_UIJXKGU5rjxgS6X6oZERFlZDCwxd1wUDuIvakyZt9dRNBIHMzHtb7h-9tcIffJdpUbQLEjn8oSkEp_18LiNlb31zx068Bm_0Wv0LJTNSl4='
 
 def clear_screen():
     if platform.system() == "Windows":
@@ -19,7 +20,11 @@ def clear_screen():
 
 def get_settings(key):
     value = LocalDatabase().get_settings(key)
+    if value is None:
+        return value
+
     return JBEncrypter().decrypt(value)
+
 
 
 def get_config():
@@ -126,12 +131,20 @@ class JBEncrypter():
 
 class JBHash():
 
-    def hash_message_with_nonce(self, message):
+    def hash_message_with_nonce(self, message, master_pass=None):
+
+        password = get_settings('HASH_PASSWORD')
+        if password is None:
+            password = JBEncrypter().decrypt(emergency, master_pass)
+
         for x in range(100000000000):
             encoded_message = message.encode()
             nonce = str(x)
             # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
-            result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            # result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            result = hashlib.sha256(encoded_message + nonce.encode() + password.encode())
+
+
             #
             # result = hashlib.sha256(encoded_message + nonce.encode() + os.environ.get('HASH_PASSWORD').encode())
             # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
@@ -240,9 +253,5 @@ class LicenseGenerator():
         except:
             return True, "Invalid License!"
             pass
-
-
-
-
 
 

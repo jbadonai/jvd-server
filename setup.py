@@ -28,7 +28,7 @@ class ServerSetUP():
             self.master_pass_from_user = master_pass
             self.clear_screen()
 
-            check_pass = JBHash().hash_message_with_nonce(master_pass)[1]
+            check_pass = JBHash().hash_message_with_nonce(master_pass, master_pass=master_pass)[1]
 
             if check_pass != self.master_pass:
                 raise AuthenticationException
