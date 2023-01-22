@@ -39,7 +39,7 @@ def create_user(request: schemas.UserDataModel, db: Session = Depends(get_db), p
 
     if not user.first():
         hashPwd = Encrypter().hash(request.password)
-        new_user = models.UserModel(name=request.name, email=request.email, password=hashPwd)
+        new_user = models.UserModel(name=request.name, email=request.email, password=hashPwd, payment_info=request.payment_info)
         db.add(new_user)
         db.commit()
         db.refresh(new_user)
@@ -104,7 +104,11 @@ def update_user(email: str, request: schemas.UserDataModel, db : Session = Depen
 
     user = db.query(models.UserModel).filter(models.UserModel.email == email)
     if not user.first():
+        print(f"USER WITH EMAIL ADDRESS {email} NOT FOUND!")
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with email {email} not Found!")
-    user.update({'name':request.name, 'password':request.password})
+
+    # user.update({'name':request.name, 'password':request.password})
+    user.update({'payment_info': request.payment_info})
     db.commit()
     return {'detail': "Updated Successfully"}
+

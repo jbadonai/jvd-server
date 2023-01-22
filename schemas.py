@@ -6,6 +6,7 @@ class UserDataModel(BaseModel):
     name: str
     email: str
     password: str
+    payment_info: str
 
 
 class ClientDataModelBase(BaseModel):
@@ -28,6 +29,7 @@ class ClientDataModel(ClientDataModelBase):
 class UserDataResponseModel(BaseModel):
     name: str
     email: str
+    payment_info: str
     id: int
     clients: List[ClientDataModel] = []
 

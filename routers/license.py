@@ -62,19 +62,22 @@ def change_trial_days(days: str = 3, pp: str = None):
 #   ROUTE FOR FULL ACTIVATION
 @router.get("/full_activation")
 async def generate_full_license_and_send_via_mail(pp: str = None, email: str = "", payment_info: str = ""):
-    pass
+
     if is_authenticated(pp) is False:
         raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
 
     if email == "" or payment_info == "":
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="No Sufficient Data")
-    print('Generating full license...')
+
     # Generate full license
     user_license = await license_generator.generate_full_license(email=email, payment_info=payment_info)
-    print('sending full license to user')
+
     # send the full license to user's email address
     email_status = await license_generator.send_full_license_by_email(email=email, license=user_license)
-    print(email_status)
+
+    # update payment info for the user on the server
+
+
     # return data to the caller of the api
     return {'status_code': status.HTTP_200_OK, 'detail': email_status, 'user_license': user_license}
 

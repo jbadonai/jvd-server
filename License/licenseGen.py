@@ -40,6 +40,7 @@ class LicenseGen():
     async def generate_full_license(self,  email, payment_info):
         # trialLicense = LicenseGenerator().generate_license(days=int(Config().config('FREE_TRIAL_DAYS')))
         systemInfo = eval(payment_info)
+        
         payment_gateway = systemInfo['payment_gateway']
         payment_id = systemInfo['payment_id']
         payee_id = systemInfo['payee_id']

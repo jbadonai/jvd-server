@@ -12,6 +12,7 @@ class UserModel(Base):
     name = Column(String)
     email = Column(String)
     password = Column(String)
+    payment_info = Column(String)
     clients = relationship("ClientModel", back_populates="owner")
 
 

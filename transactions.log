@@ -919,3 +919,146 @@ INFO:paypalrestsdk.api:PayPal-Request-Id: 980b22f4-d127-4c33-8d8a-a3e6fd732ac3
 INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGRJHA23J29896TK093020R/execute
 INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.65742s.
 INFO:root:Transaction succeeded: Payment ID: PAYID-MPGRJHA23J29896TK093020R, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.984757s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 53fbc26d-9072-4c60-ae48-e81d836d0a21
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.478679s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVB7Y46K35403TC515130G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.161934s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 563ed440-4c1e-4088-bec5-0ca04b2ef22d
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVB7Y46K35403TC515130G/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.194777s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGVB7Y46K35403TC515130G, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.200764s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: a682e65d-3a1d-4077-b4d8-85c6b7af85f3
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.369139s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVETQ9LX04561SM6447828
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.152834s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: d63d5d96-87e0-4675-b3d8-3539b8ea36d9
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVETQ9LX04561SM6447828/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.197902s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGVETQ9LX04561SM6447828, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.144536s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 2d91f943-b721-4c00-a0e1-b5c4f76eab17
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 2.455029s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVG3I6G730883J8650070X
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.177713s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 3d244070-bf94-4f9b-940a-fef03608a6d9
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVG3I6G730883J8650070X/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.417660s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGVG3I6G730883J8650070X, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.68235s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 87d83b9a-d2b1-4d3b-9bf6-91712be22df5
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.917158s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVYJI68D96101WY679105X
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.195915s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 44fd87f0-48bb-4189-9f45-a13ac01f536c
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGVYJI68D96101WY679105X/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.519088s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGVYJI68D96101WY679105X, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.45088s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 1c775771-79f4-47e5-8f7a-9c0c6ff7cdf4
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.551392s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGV2MY04425909GN4680450
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.277698s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 61b9bb09-522e-4522-be68-ab77601901ec
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGV2MY04425909GN4680450/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 4.177341s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGV2MY04425909GN4680450, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.66804s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: ec608038-f7ca-4de1-ae5a-7ccac5e04df7
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.190465s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGV52Y5LD14639LJ472972H
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.733063s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: a82c07ea-8b08-43d0-8887-6196772e9272
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGV52Y5LD14639LJ472972H/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.944736s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGV52Y5LD14639LJ472972H, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.85220s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: d7f8568b-902d-4620-b9d8-8a074617d370
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.469823s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGV7UI8G593175C26991457
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.217644s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: c9b0c896-ece3-4b61-8cbb-6ffa99c706f2
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGV7UI8G593175C26991457/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.219375s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGV7UI8G593175C26991457, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.144957s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 3864eeb4-8953-4d59-bda6-12c7599ca79d
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.611334s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWDLQ1RT26451KM462212N
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 8.504576s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 46f77f8d-1e45-4b8c-a040-20c7d875507a
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWDLQ1RT26451KM462212N/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 3.79718s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGWDLQ1RT26451KM462212N, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.488390s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 881f88e0-5348-406d-8c09-384253d502f3
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.638382s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWECQ0TV87930JH8877336
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 7.392806s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 1b073b03-1d6c-4439-8b9c-8a8d02397765
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWECQ0TV87930JH8877336/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.107034s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGWECQ0TV87930JH8877336, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.40113s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: d858e93a-4641-4659-b534-bd4cde4186ec
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.405948s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWGWQ0DR70523F5510115R
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.138730s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: b650d810-1f6a-4449-be5b-dced5563a346
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWGWQ0DR70523F5510115R/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.236355s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGWGWQ0DR70523F5510115R, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.298241s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: abe86501-f112-42d7-a5bb-6322ec9f7a37
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.659649s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWLIY48V124307N880451U
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.229516s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: fba46cd3-b2ca-4208-bf1c-7cd29e348b6d
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWLIY48V124307N880451U/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.210614s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGWLIY48V124307N880451U, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.67326s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 697d8f4a-f8e2-4a75-b3d7-5cb1025fa5d9
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.850874s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWOLY7FD77179EY322541U
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.131597s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 2d7c867f-1fb6-4fe0-9162-c49ad59105d6
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWOLY7FD77179EY322541U/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.170483s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGWOLY7FD77179EY322541U, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 3.408350s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: d2c2adb9-03db-4019-a698-3fe579a1bec1
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.491070s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWTNY43069480YU5747124
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.654581s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 8fec5da9-4c0a-4313-a729-88c61fae2360
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPGWTNY43069480YU5747124/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.61164s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPGWTNY43069480YU5747124, Payer ID: JN4CFQNKWMXFN, Amount: 5.00 USD
