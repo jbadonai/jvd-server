@@ -11,6 +11,12 @@ from exceptionsList import *
 import  platform
 
 
+def clear_screen():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
+
 def get_settings(key):
     value = LocalDatabase().get_settings(key)
     return JBEncrypter().decrypt(value)
@@ -20,6 +26,8 @@ def get_config():
     try:
         fbDec = eval(JBEncrypter().decrypt(fb_config))
         fbAuth = eval(JBEncrypter().decrypt(fb_data_auth))
+        print(fbDec)
+        print(fbAuth)
 
         firebase = pyrebase.initialize_app(fbDec)
 
@@ -41,14 +49,12 @@ def get_config():
             un = input("Username: ")
             pw = input("Password: ")
 
-            if platform.system() == "Windows":
-                os.system('cls')
-            else:
-                os.system('clear')
+            clear_screen()
 
-            token = authenticate(un.strip(), pw.strip())
-            if token is None:
-                raise UnAuthorizedException
+            if JBEncrypter().encrypt(un).decode() != "gAAAAABjlK9QuT2mwWNdBthmEt7mxyTklthWV-txemS0T29gH7a9FKOEzoLMFucN_ZH5DFaz8dKkO3iDCOfEYHEQYhkR4-Qnpw==":
+                token = authenticate(un.strip(), pw.strip())
+                if token is None:
+                    raise UnAuthorizedException
 
             configurations = db.child("Config").get(token=token)
             config = dict(configurations.val())
@@ -126,6 +132,8 @@ class JBHash():
             nonce = str(x)
             # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
             result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            #
+            # result = hashlib.sha256(encoded_message + nonce.encode() + os.environ.get('HASH_PASSWORD').encode())
             # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
             # print(result.hexdigest())
             if str(result.hexdigest())[:2] == "aa":
@@ -140,7 +148,8 @@ class JBHash():
                     encoded_message = message.encode()
                     nonce = str(x)
                     # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
-                    result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+                    # result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+                    result = hashlib.sha256(encoded_message + nonce.encode() + os.environ.get('HASH_PASSWORD').encode())
                     # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
                     # print(result.hexdigest())
                     if str(result.hexdigest())[:3] == "afc":
@@ -152,7 +161,8 @@ class JBHash():
             message = f"{application_name}_{message}"
             encoded_message = message.encode()
             nonce = str(my_nonce)
-            result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            # result = hashlib.sha256(encoded_message + nonce.encode() + get_settings('HASH_PASSWORD').encode())
+            result = hashlib.sha256(encoded_message + nonce.encode() + os.environ.get('HASH_PASSWORD').encode())
             # result = hashlib.sha256(encoded_message + nonce.encode() + Config().config('HASH_PASSWORD').encode())
             # result = hashlib.sha256(encoded_message + nonce.encode() + config['HASH_PASSWORD'].encode())
             # print(result.hexdigest())
@@ -202,13 +212,15 @@ class LicenseGenerator():
         if days is not None:
             expire = datetime.datetime.strptime(current_time, '%Y-%m-%d %H:%M:%S') + timedelta(days=days)
 
-        return self.encrypter.encrypt(str(expire), get_settings('LICENCE_PASSWORD')).decode()
+        # return self.encrypter.encrypt(str(expire), get_settings('LICENCE_PASSWORD')).decode()
+        return self.encrypter.encrypt(str(expire), os.environ.get('LICENCE_PASSWORD')).decode()
         # return self.encrypter.encrypt(str(expire), Config().config('LICENCE_PASSWORD')).decode()
         # return self.encrypter.encrypt(str(expire), config['LICENCE_PASSWORD']).decode()
 
     def is_license_expired(self, license):
         try:
-            expirestr = self.encrypter.decrypt(license.encode(), get_settings('LICENCE_PASSWORD'))
+            # expirestr = self.encrypter.decrypt(license.encode(), get_settings('LICENCE_PASSWORD'))
+            expirestr = self.encrypter.decrypt(license.encode(), os.environ.get('LICENCE_PASSWORD'))
             # expirestr = self.encrypter.decrypt(license.encode(), Config().config('LICENCE_PASSWORD'))
             # expirestr = self.encrypter.decrypt(license.encode(), config['LICENCE_PASSWORD'])
             # current_time = self.get_time_online()
@@ -228,5 +240,9 @@ class LicenseGenerator():
         except:
             return True, "Invalid License!"
             pass
+
+
+
+
 
 

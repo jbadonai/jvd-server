@@ -4,3 +4,6 @@ class InternetConnectionException(Exception):
 class UnAuthorizedException(Exception):
     pass
 
+
+class AuthenticationException(Exception):
+    pass

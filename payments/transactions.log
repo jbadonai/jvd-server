@@ -1,0 +1,144 @@
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.322840s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: de86886e-1257-4802-87a5-43907b118282
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.360695s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 0.938090s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 49489f49-0e80-400d-be63-944411a0f07e
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.465620s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.279850s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 85800216-31d4-4811-be59-ec3419b1f8cd
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.585793s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 0.963754s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 0aa59eca-595c-4185-9597-1a47dcde735c
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.211072s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB6JXY251456991W559604G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.34254s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 23abcb0b-94a9-488c-8e54-700afb86b774
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB6JXY251456991W559604G/execute
+INFO:paypalrestsdk.api:Response[400]: Bad Request, Duration: 1.134203s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.24451s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 26ff8ddc-b556-4e21-9ea6-a9e5961d446c
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.611771s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB6TII2M4257284V766611F
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.585709s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 6cc087f2-1380-4017-a704-b32d209b2ef9
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB6TII2M4257284V766611F/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.442316s.
+ERROR:root:Transaction failed: Payment ID: PAYID-MPB6TII2M4257284V766611F, Payer ID: JN4CFQNKWMXFN, Error: None
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.12036s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 79f4c4d9-5426-409e-b269-9202e5aac5ca
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[400]: Bad Request, Duration: 1.73816s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 0.972805s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 36fd07f7-0d15-4c58-8327-df230d23ea07
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.1647s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 39b54731-fc2c-4dbc-a92e-643166225d14
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.267536s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB6ZPY15M89856LV265203B
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.414146s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 1571f147-9bc7-4ccc-8b02-ba414efa4233
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB6ZPY15M89856LV265203B/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.962906s.
+ERROR:root:Transaction failed: Payment ID: PAYID-MPB6ZPY15M89856LV265203B, Payer ID: JN4CFQNKWMXFN, Error: None
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 0.901815s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 32090139-fa74-4bfe-a572-d15673a1eba6
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.211308s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB63GQ3J450569EU743994C
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.159484s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 34eb16af-00a8-4821-bbf7-53c295fae0c1
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB63GQ3J450569EU743994C/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.109267s.
+ERROR:root:Transaction failed: Payment ID: PAYID-MPB63GQ3J450569EU743994C, Payer ID: JN4CFQNKWMXFN, Error: None
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.125113s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: cf4246bb-cc9a-41d9-a012-75fd0d3d1eb9
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.375471s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB64MI3YU48918PC809611F
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.193881s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: c5de37c8-153c-44bb-b1b3-aa68d5efd3b1
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPB64MI3YU48918PC809611F/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.395606s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPB64MI3YU48918PC809611F, Payer ID: JN4CFQNKWMXFN, Amount: 7.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.242365s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: e06841e4-fc50-45ba-80a1-e26b002a25f2
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.662215s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCA2TQ0DH25051XK897961R
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.237250s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: b110a784-6e35-42b5-8c6b-24607f79d15b
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCA2TQ0DH25051XK897961R/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.608600s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPCA2TQ0DH25051XK897961R, Payer ID: JN4CFQNKWMXFN, Amount: 7.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.485800s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 947d6d2d-b130-427e-bef0-7621490f3f4b
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.369843s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.532005s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 791c2384-461a-4737-94c4-5a85947be44d
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.99839s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPCCSXA6VK418576A654222G, Payer ID: JN4CFQNKWMXFN, Amount: 7.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.177558s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.448405s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 2fa7a2a5-cea0-48d7-8b9b-159f9efb5616
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G/execute
+INFO:paypalrestsdk.api:Response[400]: Bad Request, Duration: 1.336255s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.805226s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.389227s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 90e40141-6c0a-45ca-b46f-1e0362d958d4
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G/execute
+INFO:paypalrestsdk.api:Response[400]: Bad Request, Duration: 1.772625s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.429417s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.148799s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 8d3016cb-aade-4d40-a231-37bb5043d5a5
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G/execute
+INFO:paypalrestsdk.api:Response[400]: Bad Request, Duration: 1.216182s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.175355s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.48971s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: ac66ce5e-953e-43bc-9ea7-e904f0371bf6
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCCSXA6VK418576A654222G/execute
+INFO:paypalrestsdk.api:Response[400]: Bad Request, Duration: 1.116278s.
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.489646s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 20a835f3-4eea-41cc-93d4-2206e305aee4
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 2.247339s.
+INFO:paypalrestsdk.api:Request[GET]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCC2XA1JU6355551248690R
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.117158s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 11d0a33d-ed0e-48e7-b4f0-2879998529b4
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MPCC2XA1JU6355551248690R/execute
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 2.343575s.
+INFO:root:Transaction succeeded: Payment ID: PAYID-MPCC2XA1JU6355551248690R, Payer ID: JN4CFQNKWMXFN, Amount: 7.00 USD
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.177069s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: bdf2570a-ddc1-4d1c-869d-97f1b38e86fb
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.506226s.

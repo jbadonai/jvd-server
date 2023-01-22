@@ -5,11 +5,12 @@ import schemas, models, database
 from License.security import JBEncrypter, JBHash
 from localDatabase import LocalDatabase
 from License.security import JBEncrypter
+import os
 
 
-def get_settings(key):
-    value = LocalDatabase().get_settings(key)
-    return JBEncrypter().decrypt(value)
+# def get_settings(key):
+#     value = LocalDatabase().get_settings(key)
+#     return JBEncrypter().decrypt(value)
 
 router = APIRouter(
     prefix="/client",
@@ -20,7 +21,8 @@ get_db = database.get_db
 
 def is_authenticated(pp):
     # p = JBHash().hash_message_with_nonce(Config().config('ENCRYPT_PASSWORD'))
-    p = JBHash().hash_message_with_nonce(get_settings('ENCRYPT_PASSWORD'))
+    # p = JBHash().hash_message_with_nonce(get_settings('ENCRYPT_PASSWORD'))
+    p = JBHash().hash_message_with_nonce(os.environ.get('ENCRYPT_PASSWORD'))
     if pp is None or pp != p[1]:
         return False
 
@@ -87,21 +89,31 @@ def delete_client(systemId: str, db: Session = Depends(get_db), pp: str = None):
     return {'detail': f"User with SystemId {systemId} deleted successfully!"}
 
 
-@router.put("/{systemId}", status_code=status.HTTP_200_OK)
+@router.put("/update/{systemId}", status_code=status.HTTP_200_OK)
 def client_update(systemId: str, request: schemas.ClientDataModel, db: Session = Depends(get_db), pp: str = None):
+    print('Updating client..................')
     if is_authenticated(pp) is False:
+        print("not Authorized")
         raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
 
     client = db.query(models.ClientModel).filter(models.ClientModel.systemId == systemId)
     if not client.first():
+        print('system id not found.')
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with system Id {systemId} not Found!")
-
+    print()
+    print(request)
+    print()
     client.update({'systemId': request.systemId,
                     'systemKey': request.systemKey,
                     'trialLicenseKey': request.trialLicenseKey,
                     'fullLicenseKey': request.fullLicenseKey,
                     'trialExpired': request.trialExpired,
                     'trialActivated': request.trialActivated,
-                    'active':request.active,
+                    'active': request.active,
                     'messageSentSuccessfully': request.messageSentSuccessfully})
+
+    db.commit()
+    # db.refresh(client)
+
     return {'detail': f"client with system Id {systemId} updated successfully!"}
+

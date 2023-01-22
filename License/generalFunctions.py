@@ -11,11 +11,12 @@ from License.security import JBHash, JBEncrypter
 import re
 from localDatabase import LocalDatabase
 from License.security import JBEncrypter
+import os
 
 
-def get_settings(key):
-    value = LocalDatabase().get_settings(key)
-    return JBEncrypter().decrypt(value)
+# def get_settings(key):
+#     value = LocalDatabase().get_settings(key)
+#     return JBEncrypter().decrypt(value)
 
 
 class GeneralFunctions():
@@ -50,11 +51,13 @@ class GeneralFunctions():
 
             # set system id literal
             # message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{Config().config('ENCRYPT_PASSWORD')}"
-            message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{get_settings('ENCRYPT_PASSWORD')}"
+            # message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{get_settings('ENCRYPT_PASSWORD')}"
+            message = f"{nodeName}.{system}.{release}.{machine}.{processor}.{os.environ.get('ENCRYPT_PASSWORD')}"
 
             # layer 1 encryption of system id [encrption]
             # encryptedMessage = JBEncrypter().encrypt(message, Config().config('ENCRYPT_PASSWORD'))
-            encryptedMessage = JBEncrypter().encrypt(message, get_settings('ENCRYPT_PASSWORD'))
+            # encryptedMessage = JBEncrypter().encrypt(message, get_settings('ENCRYPT_PASSWORD'))
+            encryptedMessage = JBEncrypter().encrypt(message, os.environ.get('ENCRYPT_PASSWORD'))
 
             # layer 1 encryption of system id [hash]
             hashMessage = JBHash().hash_message_with_nonce(message)
