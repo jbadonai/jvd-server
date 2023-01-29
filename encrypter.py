@@ -8,3 +8,6 @@ class Encrypter():
 
     def hash(self, message):
         return self.pwd_cxt.hash(message)
+
+    def verify_password(self, plain_password, hashed_password):
+        return self.pwd_cxt.verify(plain_password, hashed_password)

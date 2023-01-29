@@ -86,7 +86,11 @@ def delete_client(systemId: str, db: Session = Depends(get_db), pp: str = None):
 
     client.delete(synchronize_session=False)
     db.commit()
-    return {'detail': f"User with SystemId {systemId} deleted successfully!"}
+    data = {'status_code': status.HTTP_200_OK,
+            'deleted': True,
+            'detail': f"User with SystemId {systemId} deleted successfully!"}
+    # print(data)
+    return data
 
 
 @router.put("/update/{systemId}", status_code=status.HTTP_200_OK)

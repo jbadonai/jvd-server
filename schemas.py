@@ -37,6 +37,14 @@ class UserDataResponseModel(BaseModel):
         orm_mode = True
 
 
+class UserDataResponseModelAuth(BaseModel):
+    email: str
+    password: str
+
+    class Config():
+        orm_mode = True
+
+
 
 class ClientDataResponseModel(BaseModel):
     systemId: str

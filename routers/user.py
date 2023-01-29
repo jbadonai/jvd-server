@@ -56,6 +56,25 @@ def get_all_users(db: Session = Depends(get_db)):
     return users
 
 
+@router.get("/auth", status_code=status.HTTP_200_OK)
+def authenticate_user(password: str =None, email: str = None, db: Session = Depends(get_db)):
+    if password is None or email is None:
+        HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
+    user = db.query(models.UserModel).filter(models.UserModel.email == email)
+    if not user.first():
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"User with  email {email} not Found!")
+
+    real_user = user.first()
+    verify = Encrypter().verify_password(password, real_user.password)
+
+    data = {'status_code':status.HTTP_200_OK, 'verified': verify}
+    return data
+
+    # return user.first()
+
+
+
 @router.get("/{email}", status_code=status.HTTP_200_OK, response_model=schemas.UserDataResponseModel)
 def get_user(email: str, db: Session = Depends(get_db)):
     user = db.query(models.UserModel).filter(models.UserModel.email == email)
