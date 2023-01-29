@@ -50,6 +50,7 @@ def create_user(request: schemas.UserDataModel, db: Session = Depends(get_db), p
 
 @router.get("/all", status_code=status.HTTP_200_OK, response_model=List[schemas.UserDataResponseModel])
 def get_all_users(db: Session = Depends(get_db)):
+    print('Getting all users...')
     users = db.query(models.UserModel).all()
     if not users:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Database is empty!")

@@ -5,7 +5,10 @@
     <bookmark url="file://$PROJECT_DIR$/routers/user.py" line="40" mnemonic="2" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="626797e8-672c-4597-a100-09728ae9baa2" name="Default Changelist" comment="" />
+    <list default="true" id="626797e8-672c-4597-a100-09728ae9baa2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/localdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/localdb.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/user.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,20 +50,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routers/user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
+            <state relative-caret-position="113">
+              <caret line="51" column="49" lean-forward="true" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
                 <element signature="e#603#903#0" />
+                <element signature="e#1105#1757#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routers/client.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="183">
@@ -147,9 +151,9 @@
         <option value="$PROJECT_DIR$/routers/license.py" />
         <option value="$PROJECT_DIR$/schemas.py" />
         <option value="$PROJECT_DIR$/encrypter.py" />
-        <option value="$PROJECT_DIR$/routers/user.py" />
         <option value="$PROJECT_DIR$/routers/client.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/routers/user.py" />
       </list>
     </option>
   </component>
@@ -350,12 +354,12 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17408586" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17408586" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29129663" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34991118" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -606,17 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routers/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="64" column="24" lean-forward="true" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#61#0" expanded="true" />
-            <element signature="e#603#903#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -634,6 +627,18 @@
             <element signature="e#1012#2203#0" />
             <element signature="e#2331#2730#0" />
             <element signature="e#2837#3015#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routers/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="51" column="49" lean-forward="true" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+            <element signature="e#603#903#0" />
+            <element signature="e#1105#1757#0" />
           </folding>
         </state>
       </provider>
