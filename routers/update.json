@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "video-downloader-auth",
+  "private_key_id": "ccd8e9bf25a57e6cda8dc233ac996b1768d2d9e8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCdVFEXL0tV/6H1\n0CC6qhCR38tEcmQDJb5P6mgkVp0TenHtbRCRAiE4yHRo9SS0wm6HhIWiLi6hm3IQ\nFOG2Gf0g+D9jZ+PoulBZlZTeB/19VxCGYrURAuLnGigyi7ZZhd5xEYdIeMnzQyf2\nmYjlxSPDfPVQTTw3RxerOaE6lsn3DzZpITG/8bMZqaBk4iUY4YAD6oxiddq3ad+t\njEbk4WvY2if1eNm6Rj9EkGnGhjwSDz87YYS3iKOaIFBNkpYVwUlcnvan9hw05eD/\njcvOb3Q2wEYj2o1SC1uiKR+Yl11Gbn7Hf0to3wONc2UeBIlwz/DGoQsvT4GU+DAg\nGdn+Eel3AgMBAAECggEACdRPPqoTRFu0xDVNHixq3ZpESlH1QqcUhUypVf/dT266\neHF0dALUjYYkk7whH3P4UNosOS42dp1OGogbc/Oat3kbCLxgZlVhmL86LkcEhNSw\nMR0wn8/02ihts368FUrCU4EbWSFGyL583DDKd0SCT//aGbrBlNiJt4ZhttXd52QA\nN0ddJJgDkxfn6PGz0Umtu56klulngjt21W5wVCseXsGljaOHOz+blOn+i+D+gHTb\nM65M3xSZZ8Y8PBjQy2FBVkb1yeJVw9z/LH2J0yDdT7yyju0UvOxVs2ABK1uRBmxR\nUFwt2xvE/WBxHKinsl73b8cTMvFABPNZkCK9xYzv+QKBgQDeA1yR5tm0WofIWr2t\nea2iBmP8rNDpMK2K653RuYc/J6hm7vYr9w2pFddkc84fQhYJGsF1siHS+Eno3PJS\n103DITHuMqW4+Kb7vvBkOkNf8xTIv9Kvc6+RFYvKnz3ztruLihl/GQPI0dbkjmQu\nKPeD6E44DarFCrI6XGbB7IpTKQKBgQC1agO/BLGSc0MLGVQX5mKaCmHA6WHkg1Rx\n9lcCzupZl2cREXJmUBhd4RiG6OWK+xeGb49soBXJQytHQErs+zxtmJkDh1gZkirC\nxZZ54zh2Yz5ObaaKHnCihYFhpL201uwkzzOUJf1MWuyIPryAOuSZFo/pO2/4NKgG\nvYWlShmLnwKBgQCsJBEfs84zsEo+CFWv73u4+JmIbnrhhHPbFkvdNKxwRJCnlzta\n5Yk7BItpAP3ecMBjONKuLntZeFjebIqbvwM1fESZu72RiYL4CZmdLSvWdsUzzsBO\neDW2Ge21IvnHQXVzgZW5Xaz4hfPIbbuxquQX7ATSI464j02YQNMQJBcw2QKBgQCa\nqydEfbjzdofLd63FrquUT5OmSJQoonulqfPnNgiBl97Mo4ZYiqMrrxUdOIUz5/3X\npVevshDBBh5o4fy/bTfI7NhQNN089+yzIIi5pKrn7JcbgMsDaQ540cBMQotnGfI9\nM9by0SzTI5YUVwCZhxyNFLpfjEhbYnF7RawjDzkWWwKBgQChSmSX0J5067+PpZpC\nh0FTQJXnm768412of3zreYNNvilVQz1g/B2nSzxhiSs43P5/i7j7WM7FE0HEUSmZ\nkeFKqBRjrOvylzTiiK/2xAPAVPfkzuFfDAXONkTR6MVUgJzcGZXxF+MovQNNfAHg\nbx3McDYKLm5FICq3h/uPQnhFXA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ahnsf@video-downloader-auth.iam.gserviceaccount.com",
+  "client_id": "102806961006249136320",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ahnsf%40video-downloader-auth.iam.gserviceaccount.com"
+}

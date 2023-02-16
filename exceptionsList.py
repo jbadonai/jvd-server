@@ -7,3 +7,7 @@ class UnAuthorizedException(Exception):
 
 class AuthenticationException(Exception):
     pass
+
+
+class OperatingSystemException(Exception):
+    pass

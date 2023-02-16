@@ -57,7 +57,7 @@ class PaypalPayment():
                 "redirect_urls": {
                     # "return_url": "https://jbadonai.github.io/jbadonaiventures-webpage/thankyou.html",
                     # "cancel_url": "https://jbadonai.github.io/jbadonaiventures-webpage/cancel.html"
-                    "return_url": f"{os.environ.get('PAYPAL_RETURN_URL')}?token={token}",
+                    "return_url": f"{os.environ.get('PAYPAL_RETURN_URL')}?payerToken={token}",
                     "cancel_url": os.environ.get('PAYPAL_CANCEL_URL'),
 
                 },

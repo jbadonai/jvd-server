@@ -3,7 +3,7 @@ try:
     from database import engine
     import models
     import database
-    from routers import client, user, license, payments
+    from routers import client, user, license, payments, updates
     import uvicorn
     import  os
     import  time
@@ -22,6 +22,7 @@ app.include_router(client.router)
 app.include_router(user.router)
 app.include_router(license.router)
 app.include_router(payments.router)
+app.include_router(updates.router)
 
 models.Base.metadata.create_all(engine)
 get_db = database.get_db()
