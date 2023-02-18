@@ -1,5 +1,5 @@
 import paypalrestsdk
-import logging
+import logging as paypal_logging
 import webbrowser
 import sqlite3
 import os
@@ -10,12 +10,14 @@ class PaypalPayment():
         self.payment = None
         self.browser = None
         self.approval_url = None
+        # self.logging = None
 
         self.initialize()
 
     def initialize(self):
         try:
-            logging.basicConfig(filename='transactions.log', level=logging.INFO)
+            # logging.basicConfig(filename='paypal_transactions.log', level=logging.INFO)
+            paypal_logging.basicConfig(filename='paypal_transactions.log', level=paypal_logging.INFO)
         except Exception as e:
             print(f"An Error Occurred in initialize: {e}")
 
@@ -31,11 +33,21 @@ class PaypalPayment():
     async def configure_payement(self):
         try:
             # Configure the SDK with your API credentials
-            paypalrestsdk.configure({
-                "mode": "sandbox", # or "live"
-                "client_id": os.environ.get('PAYPAL_CLIENT_ID'),
-                "client_secret": os.environ.get('PAYPAL_CLIENT_SECRET')
-            })
+            go_live = bool(int(os.environ.get('GO_LIVE')))
+            if go_live is True:
+                paypalrestsdk.configure({
+                    "mode": "live",
+                    "client_id": os.environ.get('PAYPAL_CLIENT_ID'),
+                    "client_secret": os.environ.get('PAYPAL_CLIENT_SECRET')
+                })
+            else:
+                paypalrestsdk.configure({
+                    "mode": "sandbox", # or "live"
+                    "client_id": os.environ.get('PAYPAL_CLIENT_ID'),
+                    "client_secret": os.environ.get('PAYPAL_CLIENT_SECRET')
+                })
+
+
         except Exception as e:
             print(f"An Error Occurred in configure payment. {e}")
 
@@ -55,9 +67,7 @@ class PaypalPayment():
                     "payment_method": "paypal"
                 },
                 "redirect_urls": {
-                    # "return_url": "https://jbadonai.github.io/jbadonaiventures-webpage/thankyou.html",
-                    # "cancel_url": "https://jbadonai.github.io/jbadonaiventures-webpage/cancel.html"
-                    "return_url": f"{os.environ.get('PAYPAL_RETURN_URL')}?payerToken={token}",
+                    "return_url": f"{os.environ.get('PAYPAL_RETURN_URL')}?appToken={token}",
                     "cancel_url": os.environ.get('PAYPAL_CANCEL_URL'),
 
                 },
@@ -74,6 +84,7 @@ class PaypalPayment():
 
     async def create_payment(self):
         try:
+            paypal_logging.info(f"[PAYMENT CREATION INITIATED]: ---------------")
             # Create the payment
             if self.payment.create():
                 print("Payment created!")
@@ -93,6 +104,7 @@ class PaypalPayment():
             else:
                 print("Error creating payment:", self.payment.error)
         except Exception as e:
+            paypal_logging.info(f"[PAYMENT CREATION FAILED]: error:{e}")
             print(f"An Error Occurred in create payment: {e}")
 
     async def execute_payment(self, payment_id, payer_id):
@@ -110,21 +122,23 @@ class PaypalPayment():
         if payment.execute({"payer_id": payer_id}):
             if payment.state == "approved":
                 # log status
-                logging.info("Transaction succeeded: Payment ID: %s, Payer ID: %s, Amount: %s %s", payment.id, payer_id,
+                paypal_logging.info("[Transaction succeeded]: Payment ID: %s, Payer ID: %s, Amount: %s %s", payment.id, payer_id,
                              payment.transactions[0].amount.total, payment.transactions[0].amount.currency)
-                print("Payment approved!")
+                # print("Payment approved!")
                 data = {'status': 'Payment Approved!', 'error_details': None}
                 return data
             else:
-                logging.error("Transaction failed: Payment ID: %s, Payer ID: %s, Error: %s", payment.id, payer_id,
+                paypal_logging.error("[Transaction failed]: Payment ID: %s, Payer ID: %s, Error: %s", payment.id, payer_id,
                               payment.error)
-                print("Error executing payment:", payment.error)
-                print("Payment not approved!")
+                # print("Error executing payment:", payment.error)
+                # print("Payment not approved!")
                 data = {'status': 'Payment Not Approved!', 'error_details': payment.error}
                 return data
         else:
-            print("Error executing payment:", payment.error)
+            # print("Error executing payment:", payment.error)
+
             data = {'status': 'Payment Not Approved!', 'error_details': payment.error}
+            paypal_logging.info(f"[TRANSACTION ERROR!]: payment_id: {payment_id}, payer_id:{payer_id}, error_details: { payment.error}")
             return data
 
 

@@ -10,6 +10,7 @@ from License.security import JBEncrypter
 from payments import paypal
 import os
 from payments.paypal import PaypalPayment
+from payments.paystack import JbaPaystackPayments
 from License.licenseGen import LicenseGen
 
 license_generator = LicenseGen()
@@ -84,10 +85,17 @@ async def create_payment_for_paypal(user_data=None):
 #   EXECUTE THE PAYMENT
 #   this is requested and executed after user has finished paying and has received payment id, payee id and token
 @router.get("/paypal/execute")
-async def create_payment_for_paypal(paymentId=None,payeeId=None, token=None, user_data=None):
+# async def execute_payment_for_paypal(paymentId=None,payeeId=None, token=None, user_data=None):
+async def execute_payment_for_paypal(execute_data=None, user_data=None):
     try:
-        if paymentId is None or payeeId is None or token is None or user_data is None:
+        if execute_data is None or user_data is None:
             raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="No Sufficient Data")
+
+        # change the executed data from string to dictionary then extract individual content
+        ed = eval(execute_data)
+        paymentId = ed['payment_id']
+        payeeId = ed['payee_id']
+        token = ed['token']
 
         data = await start_paypal_payment_execution(paymentId, payeeId, token)
         if data['error_details'] is None:
@@ -105,3 +113,76 @@ async def create_payment_for_paypal(paymentId=None,payeeId=None, token=None, use
         return {'status_code': status.HTTP_200_OK, 'detail': data}
     except Exception as e:
         return str(e)
+
+# -----------------------------------------------------------------------------------------------------------------
+
+async def start_paystack_payment_creation(user_data=None):
+    try:
+        user_data = eval(user_data)
+        data = None
+        paystack_payment = JbaPaystackPayments()
+        authorization_url, access_code, reference = paystack_payment.initialize_payment(
+            token=user_data['token'], email=user_data['email'])
+        data = {
+            'authorization_url': authorization_url,
+            'access_code': access_code,
+            'reference': reference
+        }
+
+        return data
+
+    except Exception as e:
+        print(f"An Error Occurred in process paystack payment: {e}")
+
+
+async def start_paystack_payment_execution(execute_data = None, user_data=None):
+    try:
+        user_data = eval(user_data)
+        execute_data = eval(execute_data)
+
+        data = None
+        paystack_payment = JbaPaystackPayments()
+        status, amount, currency, transaction_date, error_details = await paystack_payment.verify_payment(execute_data['reference'])
+
+        data = {
+            'status': status,
+            'amount': amount,
+            'currency': currency,
+            'transaction_date': transaction_date,
+            'error_details': error_details
+        }
+
+        return data
+
+    except Exception as e:
+        print(f"An Error Occurred in payments.py > start_paystack_payment_execution : {e}")
+
+
+# CREATE PAYMENT FOR PAYSTACK
+@router.get("/paystack")
+async def create_payment_for_paystack(user_data=None):
+    try:
+        # CREATE PAYMENT
+        # to return 'approval url' and 'payment object' as data to the client
+        # approval url will be open for client user to make payment
+        data = await start_paystack_payment_creation(user_data=user_data)
+
+        return {'status_code': status.HTTP_200_OK, 'detail': data}
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="No Sufficient Data")
+
+# VERIFY PAYMENT FOR PAYSTACK
+@router.get("/paystack/execute")
+async def execute_payment_for_paystack(execute_data=None, user_data=None):
+    try:
+        if execute_data is None or  user_data is None:
+            raise Exception
+
+        data = await start_paystack_payment_execution(execute_data=execute_data, user_data=user_data)
+        print(f"Detail data ========> { data}")
+
+        return {'status_code': status.HTTP_200_OK, 'detail': data}
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="No Sufficient Data")
+
+

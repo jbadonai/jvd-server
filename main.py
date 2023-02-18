@@ -75,6 +75,7 @@ if __name__ == "__main__":
 
             if myConfig is not None:
                 print('Saving configuration data')
+
                 for config in myConfig:
                     # check if the key exists in the database
                     settingExists = LocalDatabase().is_setting_key_in_database(config)
@@ -89,6 +90,7 @@ if __name__ == "__main__":
                         val = myConfig[config]
                         valEnc = JBEncrypter().encrypt(str(val))
                         LocalDatabase().update_setting(config, valEnc)
+
                 return True
             else:
                 print(f"No configuration data found on data server: \n\tError detail:-{errorDetail}")
