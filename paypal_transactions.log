@@ -1,0 +1,24 @@
+INFO:root:[PAYMENT CREATION INITIATED]: ---------------
+INFO:paypalrestsdk.api:Request[POST]: https://api.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Not logging full request/response headers and body in live mode for compliance
+INFO:paypalrestsdk.api:Response[401]: Unauthorized, Duration: 1.434818s.
+INFO:root:[PAYMENT CREATION FAILED]: error:Failed. Response status: 401. Response message: Unauthorized. Error message: {"error":"invalid_client","error_description":"Client Authentication failed"}
+INFO:root:[Payment Created Successfully] - owner: jayadonai@yahoo.com, amount: 300000.0, reference:ug7stj2hlraccess_code: izy3i717ku6r9y3, url:https://checkout.paystack.com/izy3i717ku6r9y3, date:2023-02-18 21:24:43.797408
+INFO:root:[PAYMENT CREATION INITIATED]: ---------------
+INFO:paypalrestsdk.api:Request[POST]: https://api.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Not logging full request/response headers and body in live mode for compliance
+INFO:paypalrestsdk.api:Response[401]: Unauthorized, Duration: 1.298197s.
+INFO:root:[PAYMENT CREATION FAILED]: error:Failed. Response status: 401. Response message: Unauthorized. Error message: {"error":"invalid_client","error_description":"Client Authentication failed"}
+INFO:root:[Payment Created Successfully] - owner: jayadonai@yahoo.com, amount: 300000.0, reference:2glnzyb6acaccess_code: vzwvnqiurcwwpzb, url:https://checkout.paystack.com/vzwvnqiurcwwpzb, date:2023-02-18 22:18:33.419806
+INFO:root:[PAYMENT CREATION INITIATED]: ---------------
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/oauth2/token
+INFO:paypalrestsdk.api:Response[200]: OK, Duration: 1.337200s.
+INFO:paypalrestsdk.api:PayPal-Request-Id: 3ac0b65a-41e0-4e70-bcc5-cb39bb1c8ad3
+INFO:paypalrestsdk.api:Request[POST]: https://api.sandbox.paypal.com/v1/payments/payment
+INFO:paypalrestsdk.api:Response[201]: Created, Duration: 1.158040s.
+INFO:root:[Payment Created Successfully] - owner: jayadonai@yahoo.com, amount: 300000.0, reference:y0k0xo3vbgaccess_code: 7rwhdxhbciqz4ky, url:https://checkout.paystack.com/7rwhdxhbciqz4ky, date:2023-02-21 12:13:44.702644
+INFO:root:[TRANSACTION ERROR]: referencey0k0xo3vb, error_details:  400: {"status":false,"message":"Transaction reference not found"}
+INFO:root:[TRANSACTION ERROR]: referencey0k0xo3vbgl, error_details:  400: {"status":false,"message":"Transaction reference not found"}
+INFO:root:[Payment Created Successfully] - owner: jayadonai@yahoo.com, amount: 300000.0, reference:mblp3sjczjaccess_code: 12gddfqmxp9uuj7, url:https://checkout.paystack.com/12gddfqmxp9uuj7, date:2023-02-21 13:19:45.514568
+INFO:root:[Payment Created Successfully] - owner: jayadonai@yahoo.com, amount: 300000.0, reference:2d007pdubgaccess_code: i1o5d19mcf5mwb9, url:https://checkout.paystack.com/i1o5d19mcf5mwb9, date:2023-02-21 22:08:59.028073
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:2d007pdubg,amount: 300000, currency: NGN, transaction_date: 2023-02-21T21:08:58.000Z
