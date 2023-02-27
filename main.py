@@ -33,6 +33,18 @@ def home():
     return {'status': f'Welcome Home!'}
 
 
+
+@app.get("/backup", status_code=status.HTTP_200_OK)
+def backup(filename: str=None):
+    if filename is not None:
+        current_dir = os.getcwd()
+        return {'status': f'Current working directory is: {current_dir}'}
+    else:
+        return {'status': "Backup files are up to date"}
+
+
+
+
 def clear_screen():
     if platform.system() == "Windows":
         os.system('cls')
