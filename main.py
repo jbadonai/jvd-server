@@ -1,5 +1,5 @@
 try:
-    from fastapi import FastAPI, status
+    from fastapi import FastAPI, status, HTTPException
     from database import engine
     import models
     import database
@@ -9,9 +9,9 @@ try:
     import  time
     from License import security
     from localDatabase import LocalDatabase
-    from License.security import JBEncrypter
     import platform
     from setup import ServerSetUP
+    from License.security import JBEncrypter, JBHash
 except Exception as e:
     print(f"An Error Occurred in imports section: {e}")
     input("press any key to terminate")
@@ -27,11 +27,20 @@ app.include_router(updates.router)
 models.Base.metadata.create_all(engine)
 get_db = database.get_db()
 
+configuration_data = None
+
+
+def is_authenticated(pp):
+    p = JBHash().hash_message_with_nonce(os.environ.get('ENCRYPT_PASSWORD'))
+    if pp is None or pp != p[1]:
+        return False
+
+    return True
+
 
 @app.get("/", status_code=status.HTTP_200_OK)
 def home():
     return {'status': f'Welcome Home!'}
-
 
 
 @app.get("/backup", status_code=status.HTTP_200_OK)
@@ -43,7 +52,24 @@ def backup(filename: str=None):
         return {'status': "Backup files are up to date"}
 
 
+@app.get("/config/get", status_code=status.HTTP_200_OK)
+def load_config(pp: str=None):
+    global configuration_data
 
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
+    if configuration_data is not None:
+        encConfigData = {}
+        for data in configuration_data:
+            val = configuration_data[data]
+            valEnc = JBEncrypter().encrypt(str(val))
+            # key = JBEncrypter().encrypt(data)
+            encConfigData[data] = valEnc
+
+        return {'data': encConfigData}
+    else:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
 
 def clear_screen():
     if platform.system() == "Windows":
@@ -55,6 +81,7 @@ def clear_screen():
 if __name__ == "__main__":
 
     def initialize():
+        global configuration_data
         try:
             server_setup = ServerSetUP()
             # check main database file
@@ -87,6 +114,7 @@ if __name__ == "__main__":
 
             if myConfig is not None:
                 print('Saving configuration data')
+                configuration_data = myConfig
 
                 for config in myConfig:
                     # check if the key exists in the database
