@@ -12,6 +12,7 @@ try:
     import platform
     from setup import ServerSetUP
     from License.security import JBEncrypter, JBHash
+    from backup_data import Backup
 except Exception as e:
     print(f"An Error Occurred in imports section: {e}")
     input("press any key to terminate")
@@ -44,12 +45,16 @@ def home():
 
 
 @app.get("/backup", status_code=status.HTTP_200_OK)
-def backup(filename: str=None):
-    if filename is not None:
-        current_dir = os.getcwd()
-        return {'status': f'Current working directory is: {current_dir}'}
-    else:
-        return {'status': "Backup files are up to date"}
+async def backup():
+    try:
+        result = await Backup().backup_now()
+
+        if result == 'ok':
+            return {'status': "Successful"}
+        else:
+            return {'status': "Failed to Backup"}
+    except Exception as e:
+        return {'status': f"Backup failed: {e} "}
 
 
 @app.get("/config/get", status_code=status.HTTP_200_OK)

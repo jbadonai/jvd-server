@@ -3,3 +3,5 @@ build/
 dist/
 jvd.db
 localdb.db
+paypal_transactions.log
+paystack_transactions.log
