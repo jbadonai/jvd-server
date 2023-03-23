@@ -114,7 +114,8 @@ def client_update(systemId: str, request: schemas.ClientDataModel, db: Session =
                     'trialExpired': request.trialExpired,
                     'trialActivated': request.trialActivated,
                     'active': request.active,
-                    'messageSentSuccessfully': request.messageSentSuccessfully})
+                    'messageSentSuccessfully': request.messageSentSuccessfully,
+                   'owner_id': request.owner_id})
 
     db.commit()
     # db.refresh(client)

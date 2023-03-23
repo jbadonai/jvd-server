@@ -81,3 +81,19 @@ async def generate_full_license_and_send_via_mail(pp: str = None, email: str = "
     # return data to the caller of the api
     return {'status_code': status.HTTP_200_OK, 'detail': email_status, 'user_license': user_license}
 
+
+@router.get("/full_activation_only")
+async def generate_full_license_only(pp: str = None, email: str = "", payment_info: str = ""):
+
+    if is_authenticated(pp) is False:
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail="Not Authorized")
+
+    if email == "" or payment_info == "":
+        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="No Sufficient Data")
+
+    # Generate full license
+    user_license = await license_generator.generate_full_license(email=email, payment_info=payment_info)
+
+    # return data to the caller of the api
+    return {'status_code': status.HTTP_200_OK, 'user_license': user_license}
+

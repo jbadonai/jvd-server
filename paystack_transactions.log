@@ -2,3 +2,10 @@ INFO:root:[Payment Created Successfully] - owner: jba_onlinework@yahoo.com, amou
 INFO:root:[Payment Created Successfully] - owner: jba_onlinework@yahoo.com, amount: 300000.0, reference:mk02khtgsyaccess_code: jvbas1snbdx2zci, url:https://checkout.paystack.com/jvbas1snbdx2zci, date:2023-02-25 20:31:14.488137
 INFO:root:[Payment Created Successfully] - owner: jba_onlinework@yahoo.com, amount: 300000.0, reference:lgeri2tbxlaccess_code: 4qgc2hs93w7jyws, url:https://checkout.paystack.com/4qgc2hs93w7jyws, date:2023-02-25 20:32:47.038770
 INFO:root:[TRANSACTION COMPLETED]: status: success, reference:lgeri2tbxl,amount: 300000, currency: NGN, transaction_date: 2023-02-25T19:32:46.000Z
+INFO:root:[Payment Created Successfully] - owner: jba_onlinework1@yahoo.com, amount: 300000.0, reference:hhf6oklz9yaccess_code: 13euoukmwjr5b49, url:https://checkout.paystack.com/13euoukmwjr5b49, date:2023-03-21 13:12:35.547312
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:hhf6oklz9y,amount: 300000, currency: NGN, transaction_date: 2023-03-21T12:12:35.000Z
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:hhf6oklz9y,amount: 300000, currency: NGN, transaction_date: 2023-03-21T12:12:35.000Z
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:hhf6oklz9y,amount: 300000, currency: NGN, transaction_date: 2023-03-21T12:12:35.000Z
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:hhf6oklz9y,amount: 300000, currency: NGN, transaction_date: 2023-03-21T12:12:35.000Z
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:hhf6oklz9y,amount: 300000, currency: NGN, transaction_date: 2023-03-21T12:12:35.000Z
+INFO:root:[TRANSACTION COMPLETED]: status: success, reference:hhf6oklz9y,amount: 300000, currency: NGN, transaction_date: 2023-03-21T12:12:35.000Z
