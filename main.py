@@ -12,7 +12,7 @@ try:
     import platform
     from setup import ServerSetUP
     from License.security import JBEncrypter, JBHash
-    from backup_data import Backup
+    from backup_data import Backup, Restore
 except Exception as e:
     print(f"An Error Occurred in imports section: {e}")
     input("press any key to terminate")
@@ -55,6 +55,28 @@ async def backup():
             return {'status': "Failed to Backup"}
     except Exception as e:
         return {'status': f"Backup failed: {e} "}
+
+
+@app.get("/restore", status_code=status.HTTP_200_OK)
+async def restore(filename: str=""):
+    try:
+        if filename == "":
+            raise Exception
+
+        url = await Restore().generate_restore_url(filename)
+
+        if url is None:
+            raise Exception
+
+        save_as_filename = f"{str(filename).split('_')[0]}.db"
+        result = await Restore().restore_now(url, save_as_filename)
+
+        if result == 'ok':
+            return {'status': "Successful"}
+        else:
+            return {'status': "Failed to Restore"}
+    except Exception as e:
+        return {'status': f"Restoration failed: {e} "}
 
 
 @app.get("/config/get", status_code=status.HTTP_200_OK)
